@@ -1,0 +1,50 @@
+ALGORITHM overlapping_elements_sum_1
+VAR
+i,j,n,m : INTEGER;
+sum : INTEGER := 0;
+exist : BOOLEAN;
+set1[] : INTEGER;
+set2[] : INTEGER;
+  
+BEGIN
+
+	Write("Enter set1 elements number: ");
+	read(n);
+	Write("Enter set1 elements: ");
+	FOR i FROM 1 TO n STEP 1  DO 
+	   read(set1[i]);
+	END_FOR
+
+	Write("Enter set2 elements number: ");
+	read(m);
+	Write("Enter set2 elements: ");
+	FOR i FROM 1 TO m STEP 1  DO 
+	   read(set2[i]);
+	END_FOR
+
+	FOR i FROM 1 TO n STEP 1  DO
+		exist := false;
+		FOR j FROM 1 TO m STEP 1 DO 
+			IF (set1[i]=set2[j]) THEN
+				exist := true;
+			END_IF
+		END_FOR 
+		IF (exist=true) THEN
+				sum := sum + set1[i];
+		END_IF
+	END_FOR
+
+	FOR j FROM 1 TO m STEP 1  DO
+		exist := false;
+		FOR i FROM 1 TO n STEP 1 DO 
+			IF (set2[j]=set1[i]) THEN
+				exist := true;
+			END_IF
+		END_FOR 
+		IF (exist=true) THEN
+				sum := sum + set2[j];
+		END_IF 
+	END_FOR
+
+	Write(sum)
+END
